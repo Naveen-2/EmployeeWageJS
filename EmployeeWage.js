@@ -45,6 +45,7 @@ console.log("Checking all elements in array have fulltime wage: " + fullDayWageA
 
 console.log("Check if any part time wage: " + mapDayWithWageArray.some(isAnyPartTimeWage));
 
+console.log("Number of days worked: " + empDailyWageArray.reduce(totalDaysWorked,0));
 
 function getWorkingHours(empCheck){
     switch(empCheck){
@@ -76,4 +77,10 @@ function fullTimeWage(dailyWage){
 
 function isAnyPartTimeWage(dailyWage){
     return dailyWage.includes("80");
+}
+
+function totalDaysWorked(numberOfDays, dailyWage){
+    if(dailyWage > 0)
+        return numberOfDays+1;
+    return numberOfDays;
 }
