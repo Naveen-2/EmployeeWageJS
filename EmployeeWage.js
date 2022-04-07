@@ -30,10 +30,14 @@ empDailyWageArray.forEach(sum);
 
 let mapDayWithWageArray = empDailyWageArray.map(mapDayWithWage);
 
+let fullDayWageArray = mapDayWithWageArray.filter(fullTimeWage);
+
 console.log("Total Days: " + totalWorkingDays +
                 "\nTotal Hrs: " + totalEmpHrs + "\nEmp Wage: " + totalWage);
 
 console.log("Daily Wage Map:\n " + mapDayWithWageArray);
+
+console.log("\nDaily Wage filter when fulltime wage earned:\n" + fullDayWageArray);
 
 function getWorkingHours(empCheck){
     switch(empCheck){
@@ -57,4 +61,8 @@ function sum(dailyWage){
 function mapDayWithWage(dailyWage){
     dailyCounter++;
     return dailyCounter + " = " + dailyWage; 
+}
+
+function fullTimeWage(dailyWage){
+    return dailyWage.includes("160");
 }
