@@ -16,6 +16,7 @@ let totalWage = 0;
 let dailyCounter = 0;
 
 let empDailyWageArray = new Array();
+let empDailyWageMap = new Map();
 
 while(totalEmpHrs <= MAX_HRS_IN_MONTH &&
       totalWorkingDays < NUMBER_OF_WORKING_DAYS) {
@@ -24,6 +25,7 @@ while(totalEmpHrs <= MAX_HRS_IN_MONTH &&
     let empHrs = getWorkingHours(empCheck);
     totalEmpHrs += empHrs;
     empDailyWageArray.push(calculateDailyWage(empHrs));
+    empDailyWageMap.set(totalWorkingDays, calculateDailyWage(empHrs));
 }
 
 empDailyWageArray.forEach(sum);
@@ -46,6 +48,11 @@ console.log("Checking all elements in array have fulltime wage: " + fullDayWageA
 console.log("Check if any part time wage: " + mapDayWithWageArray.some(isAnyPartTimeWage));
 
 console.log("Number of days worked: " + empDailyWageArray.reduce(totalDaysWorked,0));
+
+console.log(empDailyWageMap);
+
+console.log("Employee Wage Map totalHrs: " +
+            Array.from(empDailyWageMap.values()).reduce(totalWages, 0));
 
 function getWorkingHours(empCheck){
     switch(empCheck){
@@ -83,4 +90,8 @@ function totalDaysWorked(numberOfDays, dailyWage){
     if(dailyWage > 0)
         return numberOfDays+1;
     return numberOfDays;
+}
+
+function totalWages(totalWage, dailyWage){
+    return totalWage + dailyWage;
 }
