@@ -41,6 +41,8 @@ console.log("\nDaily Wage filter when fulltime wage earned:\n" + fullDayWageArra
 
 console.log("First fulltime wage was earned on Day: " + mapDayWithWageArray.find(fullTimeWage));
 
+console.log("Checking all elements in array have fulltime wage: " + fullDayWageArray.every(fullTimeWage));
+
 function getWorkingHours(empCheck){
     switch(empCheck){
         case IS_PART_TIME:
