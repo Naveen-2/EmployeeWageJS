@@ -11,6 +11,8 @@ const MAX_HRS_IN_MONTH = 100;
 
 let totalEmpHrs = 0;
 let totalWorkingDays = 0;
+let totalWage = 0;
+
 let empDailyWageArray = new Array();
 
 while(totalEmpHrs <= MAX_HRS_IN_MONTH &&
@@ -22,9 +24,9 @@ while(totalEmpHrs <= MAX_HRS_IN_MONTH &&
     empDailyWageArray.push(calculateDailyWage(empHrs));
 }
 
-let empWage = totalEmpHrs * WAGE_PER_HOUR;
+empDailyWageArray.forEach(sum);
 console.log("Total Days: " + totalWorkingDays +
-                "\nTotal Hrs: " + totalEmpHrs + "\nEmp Wage: " + empWage);
+                "\nTotal Hrs: " + totalEmpHrs + "\nEmp Wage: " + totalWage);
 
 function getWorkingHours(empCheck){
     switch(empCheck){
@@ -39,4 +41,8 @@ function getWorkingHours(empCheck){
 
 function calculateDailyWage(empHrs){
     return empHrs * WAGE_PER_HOUR;
+}
+
+function sum(dailyWage){
+    totalWage += dailyWage;
 }
